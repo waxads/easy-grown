@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>คลังข้อมูลผัก - EasyGrow</title>
+    
+    <link rel="stylesheet" href="css/styles.css">
+    
+    <script src="js/library.js" defer></script>
+</head>
+<body>
+
+    <aside class="sidebar">
+        <div class="sidebar-logo">
+            <div class="logo-icon">🍃</div>
+            <div class="logo-text">
+                <h2>EasyGrow</h2>
+                <p>ผู้ช่วยทำสวนอัจฉริยะ</p>
+            </div>
+        </div>
+
+        <ul class="nav-menu">
+            <li><a href="dashboard.html" >📊 แดชบอร์ด</a></li>
+            <li><a href="vegetable-library.html" class="active">📚 คลังข้อมูลผัก</a></li>
+            <li><a href="planting-log.html">📅 บันทึกการปลูก</a></li>
+            <li><a href="watering.html">💧 การรดน้ำ</a></li>
+            <li><a href="game.html">🎮 มินิเกม</a></li>
+            <li class="admin-only"><a href="manage-vegetables.html">⚙️ จัดการข้อมูลผัก</a></li>
+            <li class="admin-only"><a href="user-management.html">👥 จัดการผู้ใช้งาน</a></li>
+        </ul>
+
+        <div class="user-profile">
+            <div class="avatar" id="userAvatar">👤</div>
+            <div class="user-info">
+                <h4 id="sidebarUserName">กำลังโหลด...</h4>
+                <span id="sidebarUserRole">ผู้เยี่ยมชม</span>
+            </div>
+            <button id="logoutBtn" class="logout-btn" title="ออกจากระบบ" onclick="if(confirm('ต้องการออกจากระบบหรือไม่?')) { localStorage.removeItem('easygrowUser'); window.location.href='index.html'; }">🚪</button>
+        </div>
+    </aside>
+
+    <main class="main-content">
+        <div class="header-section">
+            <h1>คลังข้อมูลผัก 🥕</h1>
+            <p>สำรวจและเรียนรู้เกี่ยวกับผักชนิดต่างๆ ที่คุณสามารถปลูกได้</p>
+        </div>
+
+        <div class="search-container">
+            <span class="search-icon">🔍</span>
+            <input type="text" id="searchInput" class="search-input" placeholder="ค้นหาผัก (เช่น มะเขือเทศ, ผักกาด)...">
+        </div>
+
+        <div id="vegetableGrid" class="veg-grid">
+            </div>
+    </main>
+
+</body>
+</html>

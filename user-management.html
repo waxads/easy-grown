@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>จัดการผู้ใช้งาน - EasyGrow</title>
+    
+    <link rel="stylesheet" href="css/styles.css">
+    
+    <script src="js/user-management.js" defer></script>
+</head>
+<body>
+
+    <aside class="sidebar">
+        <div class="sidebar-logo">
+            <div class="logo-icon">🍃</div>
+            <div class="logo-text">
+                <h2>EasyGrow</h2>
+                <p>ผู้ช่วยทำสวนอัจฉริยะ</p>
+            </div>
+        </div>
+
+        <ul class="nav-menu">
+            <li><a href="dashboard.html" >📊 แดชบอร์ด</a></li>
+            <li><a href="vegetable-library.html">📚 คลังข้อมูลผัก</a></li>
+            <li><a href="planting-log.html">📅 บันทึกการปลูก</a></li>
+            <li><a href="watering.html">💧 การรดน้ำ</a></li>
+            <li><a href="game.html">🎮 มินิเกม</a></li>
+            <li class="admin-only"><a href="manage-vegetables.html">⚙️ จัดการข้อมูลผัก</a></li>
+            <li class="admin-only"><a href="user-management.html" class="active">👥 จัดการผู้ใช้งาน</a></li>
+        </ul>
+
+        <div class="user-profile">
+            <div class="avatar" id="userAvatar">👤</div>
+            <div class="user-info">
+                <h4 id="sidebarUserName">กำลังโหลด...</h4>
+                <span id="sidebarUserRole">ผู้เยี่ยมชม</span>
+            </div>
+            <button id="logoutBtn" class="logout-btn" title="ออกจากระบบ" onclick="if(confirm('ต้องการออกจากระบบหรือไม่?')) { localStorage.removeItem('easygrowUser'); window.location.href='index.html'; }">🚪</button>
+        </div>
+    </aside>
+
+    <main class="main-content">
+        <div class="header-section">
+            <h1>จัดการผู้ใช้งาน 👥</h1>
+            <p>จัดการบัญชีผู้ใช้และกำหนดสิทธิ์การเข้าถึง</p>
+        </div>
+
+        <div class="stats-grid">
+            <div class="stat-card">
+                <div class="stat-icon" style="background-color: #e8f5e9; color: #2e7d32;">👤</div>
+                <div class="stat-info">
+                    <h3 id="statTotal">0</h3>
+                    <p>ผู้ใช้ทั้งหมด</p>
+                </div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-icon" style="background-color: #e3f2fd; color: #1565c0;">🛡️</div>
+                <div class="stat-info">
+                    <h3 id="statAdmins">0</h3>
+                    <p>ผู้ดูแลระบบ</p>
+                </div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-icon" style="background-color: #fff3e0; color: #ef6c00;">🌱</div>
+                <div class="stat-info">
+                    <h3 id="statRegular">0</h3>
+                    <p>ผู้ใช้ทั่วไป</p>
+                </div>
+            </div>
+        </div>
+
+        <div style="box-shadow: 0 4px 15px rgba(0,0,0,0.05); border-radius: 15px;">
+            <div class="action-bar">
+                <div class="search-box">
+                    <span class="search-icon">🔍</span>
+                    <input type="text" id="searchUser" placeholder="ค้นหาชื่อหรืออีเมล...">
+                </div>
+                <button class="btn-add" id="btnAddUser">
+                    <span>+</span> เพิ่มผู้ใช้งาน
+                </button>
+            </div>
+
+            <div class="table-container">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>ผู้ใช้งาน</th>
+                            <th>อีเมล</th>
+                            <th>สถานะ</th>
+                            <th>วันที่เข้าร่วม</th>
+                            <th>จำนวนผักที่ปลูก</th>
+                            <th>จัดการ</th>
+                        </tr>
+                    </thead>
+                    <tbody id="userTableBody">
+                        </tbody>
+                </table>
+            </div>
+        </div>
+    </main>
+
+    <div class="modal-overlay" id="userModal">
+        <div class="modal-content">
+            <h2 style="color: #1a4d2e; margin-top: 0;">เพิ่มผู้ใช้งานใหม่</h2>
+            <form id="addUserForm">
+                <div class="form-group">
+                    <label>ชื่อ-นามสกุล</label>
+                    <input type="text" id="newUserName" class="form-control" required placeholder="เช่น สมชาย รักดี">
+                </div>
+                <div class="form-group">
+                    <label>อีเมล</label>
+                    <input type="email" id="newUserEmail" class="form-control" required placeholder="somchai@example.com">
+                </div>
+                <div class="form-group">
+                    <label>สถานะ</label>
+                    <select id="newUserRole" class="form-control">
+                        <option value="user">ผู้ใช้ทั่วไป</option>
+                        <option value="admin">ผู้ดูแลระบบ</option>
+                    </select>
+                </div>
+                <div class="modal-actions">
+                    <button type="button" class="btn-cancel" id="btnCancel">ยกเลิก</button>
+                    <button type="submit" class="btn-submit">เพิ่มผู้ใช้</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+</body>
+</html>

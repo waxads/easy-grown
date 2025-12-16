@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>บันทึกการปลูก - EasyGrow</title>
+    
+    <link rel="stylesheet" href="css/styles.css">
+    
+    <script src="js/planting-log.js" defer></script>
+</head>
+<body>
+
+    <aside class="sidebar">
+        <div class="sidebar-logo">
+            <div class="logo-icon">🍃</div>
+            <div class="logo-text">
+                <h2>EasyGrow</h2>
+                <p>ผู้ช่วยทำสวนอัจฉริยะ</p>
+            </div>
+        </div>
+
+        <ul class="nav-menu">
+            <li><a href="dashboard.html" >📊 แดชบอร์ด</a></li>
+            <li><a href="vegetable-library.html">📚 คลังข้อมูลผัก</a></li>
+            <li><a href="planting-log.html" class="active">📅 บันทึกการปลูก</a></li>
+            <li><a href="watering.html">💧 การรดน้ำ</a></li>
+            <li><a href="game.html">🎮 มินิเกม</a></li>
+            <li class="admin-only"><a href="manage-vegetables.html">⚙️ จัดการข้อมูลผัก</a></li>
+            <li class="admin-only"><a href="user-management.html">👥 จัดการผู้ใช้งาน</a></li>
+        </ul>
+
+        <div class="user-profile">
+            <div class="avatar" id="userAvatar">👤</div>
+            <div class="user-info">
+                <h4 id="sidebarUserName">กำลังโหลด...</h4>
+                <span id="sidebarUserRole">ผู้เยี่ยมชม</span>
+            </div>
+            <button id="logoutBtn" class="logout-btn" title="ออกจากระบบ" onclick="if(confirm('ต้องการออกจากระบบหรือไม่?')) { localStorage.removeItem('easygrowUser'); window.location.href='index.html'; }">🚪</button>
+        </div>
+    </aside>
+
+    <main class="main-content main-kanban-layout">
+        <div class="header-section">
+            <div class="header-title">
+                <h1>บันทึกการปลูก 📅</h1>
+                <p>ติดตามการเดินทางของการปลูกตั้งแต่เมล็ดจนถึงเก็บเกี่ยว</p>
+            </div>
+            <button class="btn-add" id="openModalBtn">
+                <span>+</span> เพิ่มรายการปลูก
+            </button>
+        </div>
+
+        <div class="kanban-board">
+            
+            <div class="kanban-column">
+                <div class="column-header">
+                    <span>เพิ่งปลูก</span>
+                    <span class="count-badge" id="count-planted">0</span>
+                </div>
+                <div id="col-planted" class="card-list">
+                    </div>
+            </div>
+
+            <div class="kanban-column">
+                <div class="column-header">
+                    <span>กำลังเติบโต</span>
+                    <span class="count-badge" id="count-growing">0</span>
+                </div>
+                <div id="col-growing" class="card-list"></div>
+            </div>
+
+            <div class="kanban-column">
+                <div class="column-header">
+                    <span>พร้อมเก็บเกี่ยว</span>
+                    <span class="count-badge" id="count-ready">0</span>
+                </div>
+                <div id="col-ready" class="card-list"></div>
+            </div>
+
+            <div class="kanban-column">
+                <div class="column-header">
+                    <span>เก็บเกี่ยวแล้ว</span>
+                    <span class="count-badge" id="count-harvested">0</span>
+                </div>
+                <div id="col-harvested" class="card-list"></div>
+            </div>
+
+        </div>
+
+        <div class="summary-footer">
+            <div class="summary-item">
+                <span class="summary-value" id="summary-total">0</span>
+                <span class="summary-label">จำนวนทั้งหมด</span>
+            </div>
+            <div class="summary-item">
+                <span class="summary-value" id="summary-growing">0</span>
+                <span class="summary-label">กำลังโต</span>
+            </div>
+            <div class="summary-item">
+                <span class="summary-value" id="summary-ready">0</span>
+                <span class="summary-label">รอเก็บเกี่ยว</span>
+            </div>
+            <div class="summary-item">
+                <span class="summary-value" id="summary-harvested">0</span>
+                <span class="summary-label">เก็บแล้ว</span>
+            </div>
+        </div>
+    </main>
+
+    <div class="modal-overlay" id="entryModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>เพิ่มข้อมูลการปลูกใหม่</h2>
+                <span class="close-modal" id="closeModalBtn">&times;</span>
+            </div>
+            <form id="addEntryForm">
+                <div class="form-group">
+                    <label for="vegSelect">เลือกชนิดผัก</label>
+                    <select id="vegSelect" class="form-control" required>
+                        <option value="">-- กรุณาเลือกผัก --</option>
+                        </select>
+                </div>
+                <div class="form-group">
+                    <label for="plantedDate">วันที่เริ่มปลูก</label>
+                    <input type="date" id="plantedDate" class="form-control" required>
+                </div>
+                <div class="form-group">
+                    <label for="location">สถานที่ปลูก</label>
+                    <input type="text" id="location" class="form-control" placeholder="เช่น แปลง A, กระถาง 2" required>
+                </div>
+                <div class="form-group">
+                    <label for="notes">บันทึกเพิ่มเติม </label>
+                    <textarea id="notes" class="form-control" rows="3" placeholder="รายละเอียดอื่นๆ..."></textarea>
+                </div>
+                <div class="modal-actions">
+                    <button type="button" class="btn-cancel" id="cancelBtn">ยกเลิก</button>
+                    <button type="submit" class="btn-submit">บันทึก</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+</body>
+</html>

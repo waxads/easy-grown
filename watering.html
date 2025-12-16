@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>การรดน้ำต้นไม้ - EasyGrow</title>
+    
+    <link rel="stylesheet" href="css/styles.css">
+    
+    <script src="js/watering.js" defer></script>
+</head>
+<body>
+
+    <aside class="sidebar">
+        <div class="sidebar-logo">
+            <div class="logo-icon">🍃</div>
+            <div class="logo-text">
+                <h2>EasyGrow</h2>
+                <p>ผู้ช่วยทำสวนอัจฉริยะ</p>
+            </div>
+        </div>
+
+        <ul class="nav-menu">
+            <li><a href="dashboard.html">📊 แดชบอร์ด</a></li>
+            <li><a href="vegetable-library.html">📚 คลังข้อมูลผัก</a></li>
+            <li><a href="planting-log.html">📅 บันทึกการปลูก</a></li>
+            <li><a href="watering.html" class="active">💧 การรดน้ำ</a></li>
+            <li><a href="game.html">🎮 มินิเกม</a></li>
+            <li class="admin-only"><a href="manage-vegetables.html">⚙️ จัดการข้อมูลผัก</a></li>
+            <li class="admin-only"><a href="user-management.html">👥 จัดการผู้ใช้งาน</a></li>
+        </ul>
+
+        <div class="user-profile">
+            <div class="avatar" id="userAvatar">👤</div>
+            <div class="user-info">
+                <h4 id="sidebarUserName">กำลังโหลด...</h4>
+                <span id="sidebarUserRole">ผู้เยี่ยมชม</span>
+            </div>
+            <button id="logoutBtn" class="logout-btn" title="ออกจากระบบ" onclick="if(confirm('ต้องการออกจากระบบหรือไม่?')) { localStorage.removeItem('easygrowUser'); window.location.href='index.html'; }">🚪</button>
+        </div>
+    </aside>
+
+    <main class="main-content">
+        
+        <div class="header-section-water">
+            <div class="header-icon">🚿</div>
+            <div class="header-text">
+                <h1>การรดน้ำต้นไม้</h1>
+                <p>จัดการต้นไม้ที่ต้องรดน้ำวันนี้และบันทึกการรดน้ำเพื่อให้ระบบช่วยเตือนในครั้งถัดไป</p>
+            </div>
+        </div>
+
+        <div class="watering-banner">
+            <span class="banner-highlight" id="bannerTitle">กำลังโหลดข้อมูล...</span>
+            <span class="banner-sub" id="bannerSub">กรุณาบันทึกการรดน้ำเมื่อเสร็จสิ้นแล้ว</span>
+        </div>
+
+        <div class="watering-grid" id="wateringGrid">
+            <div class="empty-state">
+                กำลังโหลดรายการต้นไม้...
+            </div>
+        </div>
+
+    </main>
+
+</body>
+</html>

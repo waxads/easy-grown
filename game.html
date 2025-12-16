@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Harvest Rush — เกมเก็บผัก</title>
+    
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+    <aside class="sidebar">
+        <div class="sidebar-logo">
+            <div class="logo-icon">🍃</div>
+            <div class="logo-text">
+                <h2>EasyGrow</h2>
+                <p>ผู้ช่วยทำสวนอัจฉริยะ</p>
+            </div>
+        </div>
+
+        <ul class="nav-menu">
+            <li><a href="dashboard.html">📊 แดชบอร์ด</a></li>
+            <li><a href="vegetable-library.html">📚 คลังข้อมูลผัก</a></li>
+            <li><a href="planting-log.html">📅 บันทึกการปลูก</a></li>
+            <li><a href="watering.html">💧 การรดน้ำ</a></li>
+            <li><a href="game.html" class="active">🎮 มินิเกม</a></li> 
+            <li class="admin-only"><a href="manage-vegetables.html">⚙️ จัดการข้อมูลผัก</a></li>
+            <li class="admin-only"><a href="user-management.html">👥 จัดการผู้ใช้งาน</a></li>
+        </ul>
+
+        <div class="user-profile">
+            <div class="avatar" id="userAvatar">👤</div>
+            <div class="user-info">
+                <h4 id="sidebarUserName">...</h4>
+                <span id="sidebarUserRole">...</span>
+            </div>
+            <button id="logoutBtn" class="logout-btn" title="ออกจากระบบ">🚪</button>
+        </div>
+    </aside>
+
+    <main class="main-content main-content-game">
+        
+        <div class="header-section">
+            <h1>Harvest Rush 🥕</h1>
+            <p>เก็บผักให้ได้มากที่สุด ระวังของเน่า!</p>
+        </div>
+
+        <div class="game-wrapper-container">
+            <div class="wrap" role="application" aria-label="Harvest Rush game">
+                
+                <div class="game-area panel">
+                    <canvas id="canvas" width="720" height="540" aria-label="สนามเกม"></canvas>
+                    <div class="touch-row" id="mobileControls">
+                        <div class="touch-btn" id="leftBtn">◀</div>
+                        <div class="touch-btn" id="rightBtn">▶</div>
+                    </div>
+                </div>
+
+                <div class="right">
+                    <div class="panel">
+                        <h1 class="game-title">คะแนนของคุณ</h1>
+                        <div class="game-score-row">
+                            <div>
+                                <div class="small">Score</div>
+                                <div class="score" id="score">0</div>
+                            </div>
+                            <div class="text-right">
+                                <div class="small">Lives</div>
+                                <div id="lives" class="lives-wrapper">
+                                    <span class="life-dot"></span><span class="life-dot"></span><span class="life-dot"></span><span class="life-dot"></span><span class="life-dot"></span>
+                                </div>
+                                <div class="spacer-sm"></div>
+                                <div class="small">High Score: <strong id="high">0</strong></div>
+                            </div>
+                        </div>
+
+                        <div class="spacer-md"></div>
+                        <div class="controls">
+                            <button id="start" class="game-btn btn-full btn-start-lg">เริ่มเกม ▶</button>
+                        </div>
+                        <div style="margin-top:8px;">
+                             <button class="btn-ghost btn-full" id="pause">พักเกม</button>
+                        </div>
+                    </div>
+
+                    <div class="panel">
+                        <div style="font-weight:700">วิธีเล่น</div>
+                        <p class="small game-desc">
+                            บังคับตะกร้า (🧺) รับผักที่ตกลงมา<br>
+                            <span class="danger">⚠ ห้ามผักตกพื้น</span><br>
+                            <span class="danger">⚠ ห้ามรับของเน่า (🤢)</span>
+                        </p>
+                        <div style="font-weight:700; margin-top:10px;">คะแนน</div>
+                        <ul class="small score-list">
+                            <li>🥕 แครอท = 10</li>
+                            <li>🍅 มะเขือเทศ = 15</li>
+                            <li>🥬 ผักกาด = 20</li>
+                        </ul>
+                    </div>
+
+                    <footer>EasyGrow Game Center</footer>
+                </div>
+
+            </div>
+        </div>
+
+    </main>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Auth Guard
+            const storedUser = localStorage.getItem('easygrowUser');
+            if (!storedUser) { window.location.href = 'index.html'; return; }
+            const user = JSON.parse(storedUser);
+
+            // Setup Sidebar
+            document.getElementById('sidebarUserName').textContent = user.name || 'ผู้ใช้งาน';
+            document.getElementById('sidebarUserRole').textContent = user.role === 'admin' ? 'ผู้ดูแลระบบ' : 'ชาวสวน';
+            document.getElementById('userAvatar').textContent = user.name ? user.name.charAt(0).toUpperCase() : 'U';
+
+            if (user.role !== 'admin') {
+                document.querySelectorAll('.admin-only').forEach(el => el.style.display = 'none');
+            }
+
+            // Logout
+            document.getElementById('logoutBtn').addEventListener('click', () => {
+                if(confirm('คุณแน่ใจหรือไม่ว่าต้องการออกจากระบบ?')) {
+                    localStorage.removeItem('easygrowUser');
+                    window.location.href = 'index.html';
+                }
+            });
+        });
+    </script>
+    
+    <script src="js/game.js"></script>
+
+</body>
+</html>

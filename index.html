@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EasyGrow - เพื่อนคู่คิดเรื่องทำสวน</title>
+    
+    <link rel="stylesheet" href="css/styles.css">
+    
+    <script src="js/index.js" defer></script>
+</head>
+<body class="landing-body">
+
+    <div class="landing-container">
+        <div class="info-side">
+            <h1>EasyGrow <br>🌱</h1>
+            <p class="tagline">แหล่งเรียนรู้การปลูกผักขั้นพื้นฐาน และผู้ช่วยอัจฉริยะสำหรับคนรักสวน</p>
+
+            <ul class="feature-list">
+                <li>
+                    <span class="feature-icon">📚</span>
+                    <span><strong>คลังข้อมูลผัก:</strong> เรียนรู้วิธีปลูก แสง น้ำ และระยะเวลาเก็บเกี่ยว</span>
+                </li>
+                <li>
+                    <span class="feature-icon">📅</span>
+                    <span><strong>บันทึกการปลูก:</strong> (สมาชิก) ติดตามการเจริญเติบโตของผักคุณ</span>
+                </li>
+                <li>
+                    <span class="feature-icon">💧</span>
+                    <span><strong>แจ้งเตือนรดน้ำ:</strong> (สมาชิก) ไม่ลืมรดน้ำอีกต่อไป</span>
+                </li>
+                <li>
+                    <span class="feature-icon">🎮</span>
+                    <span><strong>มินิเกม:</strong> (สมาชิก) ผ่อนคลายกับการจำลองการปลูก</span>
+                </li>
+            </ul>
+
+            <div class="guest-cta">
+                <p>ยังไม่อยากสมัครสมาชิก? เข้าไปดูข้อมูลก่อนได้เลย!</p>
+                <a href="vegetable-library.html" class="btn-guest">👀 เข้าชมแบบผู้เยี่ยมชม (Guest)</a>
+            </div>
+        </div>
+
+        <div class="login-side">
+            <div class="login-box">
+                <h2>เข้าสู่ระบบ</h2>
+                <div id="errorMessage" class="error-message"></div>
+                
+                <form id="loginForm">
+                    <div class="form-group">
+                        <label>อีเมล</label>
+                        <div class="input-wrapper">
+                            <span class="input-icon">✉️</span>
+                            <input type="email" id="email" placeholder="name@example.com" required>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label>รหัสผ่าน</label>
+                        <div class="input-wrapper">
+                            <span class="input-icon">🔒</span>
+                            <input type="password" id="password" placeholder="••••••••" required>
+                        </div>
+                    </div>
+                    <button type="submit" class="btn-login">เข้าใช้งานระบบ</button>
+                </form>
+
+                <div class="register-link">
+                    ยังไม่มีบัญชีใช่ไหม? <a href="register.html">สมัครสมาชิกฟรี</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>

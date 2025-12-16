@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>สมัครสมาชิก - EasyGrow</title>
+    
+    <link rel="stylesheet" href="css/styles.css">
+    
+    <script src="js/register.js" defer></script> 
+</head>
+<body class="landing-body">
+
+    <div class="landing-container register-container">
+        <div class="info-side">
+            <h1>ร่วมเป็นส่วนหนึ่ง<br>กับเรา 🌱</h1>
+            <p class="tagline">สมัครสมาชิกวันนี้ เพื่อเริ่มบันทึกการเติบโตและรับการแจ้งเตือนดูแลผักของคุณ</p>
+
+            <ul class="feature-list">
+                <li>
+                    <span class="feature-icon">🚀</span>
+                    <span><strong>เริ่มต้นง่ายๆ:</strong> สมัครฟรี ไม่มีค่าใช้จ่าย</span>
+                </li>
+                <li>
+                    <span class="feature-icon">📈</span>
+                    <span><strong>ติดตามผล:</strong> เห็นพัฒนาการผักทุกวัน</span>
+                </li>
+                <li>
+                    <span class="feature-icon">🔔</span>
+                    <span><strong>ไม่พลาดทุกการดูแล:</strong> ระบบแจ้งเตือนแม่นยำ</span>
+                </li>
+            </ul>
+        </div>
+
+        <div class="login-side register-side">
+            <div class="login-box register-box">
+                <h2>สร้างบัญชีใหม่</h2>
+                <div id="errorMessage" class="error-message"></div>
+                
+                <form id="registerForm">
+                    <div class="form-group">
+                        <label>ชื่อ-นามสกุล</label>
+                        <div class="input-wrapper">
+                            <span class="input-icon">👤</span>
+                            <input type="text" id="fullName" placeholder="สมชาย ใจดี" required>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label>อีเมล</label>
+                        <div class="input-wrapper">
+                            <span class="input-icon">✉️</span>
+                            <input type="email" id="email" placeholder="name@example.com" required>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label>รหัสผ่าน</label>
+                        <div class="input-wrapper">
+                            <span class="input-icon">🔒</span>
+                            <input type="password" id="password" placeholder="อย่างน้อย 6 ตัวอักษร" required>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label>ยืนยันรหัสผ่าน</label>
+                        <div class="input-wrapper">
+                            <span class="input-icon">🔑</span>
+                            <input type="password" id="confirmPassword" placeholder="กรอกรหัสผ่านอีกครั้ง" required>
+                        </div>
+                    </div>
+
+                    <div class="terms-checkbox">
+                        <input type="checkbox" id="terms" required>
+                        <label for="terms">ฉันยอมรับเงื่อนไขการใช้งานและนโยบายความเป็นส่วนตัว</label>
+                    </div>
+
+                    <button type="submit" class="btn-login">สมัครสมาชิก</button>
+                </form>
+
+                <div class="register-link">
+                    มีบัญชีอยู่แล้ว? <a href="index.html">เข้าสู่ระบบ</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>

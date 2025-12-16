@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>แดชบอร์ด - EasyGrow</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <script src="js/dashboard.js" defer></script>
+</head>
+<body>
+
+    <aside class="sidebar">
+        <div class="sidebar-logo">
+            <div class="logo-icon">🍃</div>
+            <div class="logo-text">
+                <h2>EasyGrow</h2>
+                <p>ผู้ช่วยทำสวนอัจฉริยะ</p>
+            </div>
+        </div>
+
+        <ul class="nav-menu">
+            <li><a href="dashboard.html" class="active">📊 แดชบอร์ด</a></li>
+            <li><a href="vegetable-library.html">📚 คลังข้อมูลผัก</a></li>
+            <li><a href="planting-log.html">📅 บันทึกการปลูก</a></li>
+            <li><a href="watering.html">💧 การรดน้ำ</a></li>
+            <li><a href="game.html">🎮 มินิเกม</a></li>
+            <li class="admin-only"><a href="manage-vegetables.html">⚙️ จัดการข้อมูลผัก</a></li>
+            <li class="admin-only"><a href="user-management.html">👥 จัดการผู้ใช้งาน</a></li>
+        </ul>
+
+        <div class="user-profile">
+            <div class="avatar" id="userAvatar">👤</div>
+            <div class="user-info">
+                <h4 id="sidebarUserName">กำลังโหลด...</h4>
+                <span id="sidebarUserRole">ผู้เยี่ยมชม</span>
+            </div>
+            <button id="logoutBtn" class="logout-btn" title="ออกจากระบบ" onclick="if(confirm('ต้องการออกจากระบบหรือไม่?')) { localStorage.removeItem('easygrowUser'); window.location.href='index.html'; }">🚪</button>
+        </div>
+    </aside>
+
+    <main class="main-content">
+        <div class="header-section">
+            <h1>ยินดีต้อนรับชาวสวน! 🌱</h1>
+            <p>นี่คือภาพรวมสวนของคุณในวันนี้</p>
+        </div>
+
+        <div class="summary-row">
+            <div class="card card-harvest">
+                <div class="summary-card-header">
+                    <span>🧺 พร้อมเก็บเกี่ยว</span>
+                </div>
+                <div class="summary-count" id="countHarvest">0</div>
+                <div class="summary-desc">ผักที่เก็บได้แล้ว</div>
+            </div>
+
+            <div class="card card-growing">
+                <div class="summary-card-header">
+                    <span>📈 กำลังเติบโต</span>
+                </div>
+                <div class="summary-count" id="countGrowing">0</div>
+                <div class="summary-desc">ผักที่กำลังโต</div>
+            </div>
+
+            <div class="card card-planted">
+                <div class="summary-card-header">
+                    <span>🗓️ เพิ่งปลูกล่าสุด</span>
+                </div>
+                <div class="summary-count" id="countPlanted">0</div>
+                <div class="summary-desc">ผักใหม่ (7 วันล่าสุด)</div>
+            </div>
+
+            <div class="card card-watering">
+                <div class="summary-card-header">
+                    <span>💧 การรดน้ำ</span> </div>
+                <div class="summary-count" id="countWater">0</div>
+                <div class="summary-desc" id="descWater">ต้นไม้ที่ต้องรดน้ำวันนี้</div>
+                <button class="btn-water" onclick="window.location.href='watering.html'">ไปรดน้ำเลย</button>
+            </div>
+        </div>
+
+        <div class="recent-activity-section">
+            <div class="section-header">
+                <h3>กิจกรรมการปลูกล่าสุด</h3>
+                <a href="planting-log.html" class="view-all-link">ดูทั้งหมด</a>
+            </div>
+            <ul class="activity-list" id="recentActivityList">
+                <li class="loading-message">กำลังโหลดข้อมูล...</li>
+            </ul>
+        </div>
+
+        <div class="recent-activity-section quick-actions-container">
+            <h3 class="quick-actions-title">เมนูลัด</h3>
+            <div class="quick-actions-row">
+                <button class="action-btn-large btn-primary" onclick="window.location.href='planting-log.html?action=add'">+ เพิ่มการปลูกใหม่</button>
+                <button class="action-btn-large" onclick="window.location.href='vegetable-library.html'">ดูรายการผัก</button>
+                <button class="action-btn-large" onclick="window.location.href='manage-vegetables.html'">จัดการคลังข้อมูล</button>
+            </div>
+        </div>
+
+    </main>
+
+</body>
+</html>
